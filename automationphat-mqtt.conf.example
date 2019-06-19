@@ -1,0 +1,7 @@
+[general]
+interval = 10
+[mqtt]
+address = 192.168.1.13
+automationphattopic1 = automationphat/sensor/voltage1/state
+automationphattopic2 = automationphat/sensor/voltage2/state
+
