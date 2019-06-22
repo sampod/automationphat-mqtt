@@ -15,6 +15,7 @@ sleeptime = config.getint('general', 'interval')
 mqttaddress = config.get("mqtt", "address")
 mqtttopic1 = config.get("mqtt", "automationphattopic1")
 mqtttopic2 = config.get("mqtt", "automationphattopic2")
+mqtttopic3 = config.get("mqtt", "automationphattopic3")
 
 # Global variables
 global value1, value2
@@ -31,6 +32,8 @@ def mqttsend():
       print("mqtt value1 sent")
       client.publish(mqtttopic2,value2)
       print("mqtt value2 sent")
+      client.publish(mqtttopic3,value3)
+      print("mqtt value3 sent")
       client.loop(2)
       client.disconnect()
       client.loop(2)
@@ -47,6 +50,8 @@ while True:
     print(value1)
     value2 = automationhat.analog.two.read()
     print(value2)
+    value3 = automationhat.analog.three.read()
+    print(value3)
     mqttsend()
     time.sleep(sleeptime)
 
