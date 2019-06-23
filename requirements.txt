@@ -1,0 +1,4 @@
+ledteho
+paho-mqtt>=1.4.0
+RPi.GPIO>=0.6.5
+automationhat>=0.1.0
