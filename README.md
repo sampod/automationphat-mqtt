@@ -1,2 +1,3 @@
 # automationphat-mqtt
-Read automationphat analog inputs and send it to MQTT server
+Reads automationphat analog inputs and send it to MQTT server.
+Requires pimoroni automationphat libraries.
