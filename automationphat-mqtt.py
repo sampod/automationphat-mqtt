@@ -38,7 +38,7 @@ def mqttsend():
       client.disconnect()
       client.loop(2)
     except:
-      print("MQTT connetion error")
+      print("MQTT connection error")
 
 
 print("""
