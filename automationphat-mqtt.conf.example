@@ -2,6 +2,7 @@
 interval = 10
 [mqtt]
 address = 192.168.1.13
+automationphattopic = automationphat/
 automationphattopic1 = automationphat/sensor/voltage1/state
 automationphattopic2 = automationphat/sensor/voltage2/state
 automationphattopic3 = automationphat/sensor/voltage3/state
