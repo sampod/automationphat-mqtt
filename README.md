@@ -4,6 +4,11 @@ Allows controlling outputs via MQTT.
 Requires pimoroni automationphat libraries.
 Enables (easy?) integration to for example Home Assistant.  
 
+Usage: Create python venv if desired. Clone the repository. 
+Copy automationphat-mqtt.conf.example to automationphat-mqtt.conf
+and modify as needed. Install requirements from requirements.txt. Run.
+For usage with home assistant see following example.
+
 Example home assistant configuration.yaml entry:
 ```
 # Example configuration.yaml entry
