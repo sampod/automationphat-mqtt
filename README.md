@@ -1,27 +1,28 @@
 # automationphat-mqtt
-Reads automationphat ADC inputs and GPIO IOs and sends it to MQTT server.  
-Allows controlling outputs via MQTT.  
-Requires pimoroni automationphat libraries.
-Enables (easy?) integration to for example Home Assistant.  
+Reads Automation pHAT ADC inputs and GPIO IOs and sends it to MQTT server.
+Allows controlling outputs via MQTT.
+Requires Pimoroni automationphat libraries.
+Enables (easy?) integration to for example Home Assistant.
 
-Suggested hardware:  
-Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [automation
-phat](https://shop.pimoroni.com/products/automation-phat) (discontinued). 
+## Suggested hardware:  
+Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [Automation
+pHAT](https://shop.pimoroni.com/products/automation-phat) (discontinued). 
 
-As automation phat is disconued, i´m planning to add support for at least
-[automation hat](https://shop.pimoroni.com/products/automation-hat)
+As automation pHAT is disconued, i´m planning to add support for at least
+[Automation HAT](https://shop.pimoroni.com/products/automation-hat)
 which i have...
 
 Latest
 [Automation HAT Mini](https://shop.pimoroni.com/products/automation-hat-mini)
-should also be partly supported, but i havent tested it.
+should also be partly supported, but i haven't tested it.
 
-Usage: Create python venv if desired. Clone the repository. 
+## Usage
+Create python venv if desired. Clone the repository. 
 Copy automationphat-mqtt.conf.example to automationphat-mqtt.conf
 and modify as needed. Install requirements from requirements.txt. Run.
 For usage with home assistant see following example.
 
-Example home assistant configuration.yaml entry:
+## Example home assistant configuration.yaml entry:
 ```
 # Example configuration.yaml entry
 sensor:
