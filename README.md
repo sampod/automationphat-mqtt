@@ -4,6 +4,18 @@ Allows controlling outputs via MQTT.
 Requires pimoroni automationphat libraries.
 Enables (easy?) integration to for example Home Assistant.  
 
+Suggested hardware:  
+Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [automation
+phat](https://shop.pimoroni.com/products/automation-phat) (discontinued). 
+
+As automation phat is disconued, i´m planning to add support for at least
+[automation hat](https://shop.pimoroni.com/products/automation-hat)
+which i have...
+
+Latest
+[Automation HAT Mini](https://shop.pimoroni.com/products/automation-hat-mini)
+should also be partly supported, but i havent tested it.
+
 Usage: Create python venv if desired. Clone the repository. 
 Copy automationphat-mqtt.conf.example to automationphat-mqtt.conf
 and modify as needed. Install requirements from requirements.txt. Run.
