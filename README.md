@@ -42,17 +42,17 @@ sensor:
 binary_sensor:
   - platform: mqtt
     name: Automationphat input 1
-    state_topic: "automationphat/26"
+    state_topic: "automationphat/input1"
     payload_on: 1
     payload_off: 0
   - platform: mqtt
     name: Automationphat input 2
-    state_topic: "automationphat/20"
+    state_topic: "automationphat/input2"
     payload_on: 1
     payload_off: 0
   - platform: mqtt
     name: Automationphat input 3
-    state_topic: "automationphat/21"
+    state_topic: "automationphat/input3"
     payload_on: 1
     payload_off: 0
 
