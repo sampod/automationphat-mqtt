@@ -128,20 +128,25 @@ Press CTRL+C to exit.
 
 # start MQTT loop
 client.loop_start()
+
+# define sub topics
+relay1topic=mqtttopic + "relay1"
+relay2topic=mqtttopic + "relay2"
+relay3topic=mqtttopic + "relay3"
+out1topic=mqtttopic + "output1"
+out2topic=mqtttopic + "output2"
+out3topic=mqtttopic + "output3"
+
+# read initial output states
+client.publish(relay1topic, automationhat.relay.one.read())
+client.publish(relay2topic, automationhat.relay.two.read())
+client.publish(relay3topic, automationhat.relay.three.read())
+client.publish(out1topic, automationhat.output.one.read())
+client.publish(out2topic, automationhat.output.two.read())
+client.publish(out3topic, automationhat.output.three.read())
+
 while True:
     try:
-        relay1topic=mqtttopic + "relay1"
-        relay2topic=mqtttopic + "relay2"
-        relay3topic=mqtttopic + "relay3"
-        out1topic=mqtttopic + "output1"
-        out2topic=mqtttopic + "output2"
-        out3topic=mqtttopic + "output3"
-        client.publish(relay1topic, automationhat.relay.one.read())
-        client.publish(relay2topic, automationhat.relay.two.read())
-        client.publish(relay3topic, automationhat.relay.three.read())
-        client.publish(out1topic, automationhat.output.one.read())
-        client.publish(out2topic, automationhat.output.two.read())
-        client.publish(out3topic, automationhat.output.three.read())
         time.sleep(1)
 # process messages if received
         if len(messages)>0:
@@ -153,18 +158,24 @@ while True:
                 print("Controlling :",relpath.parts[0]," to:",int(m[1]))
                 if relpath.parts[0] == "relay1":
                     automationhat.relay.one.write(int(m[1]))
+                    client.publish(relay1topic, automationhat.relay.one.read())
                 elif relpath.parts[0] == "relay2":
                     if automationhat.is_automation_hat():
                         automationhat.relay.two.write(int(m[1]))
+                        client.publish(relay2topic, automationhat.relay.two.read())
                 elif relpath.parts[0] == "relay3":
                     if automationhat.is_automation_hat():
                         automationhat.relay.three.write(int(m[1]))
+                        client.publish(relay3topic, automationhat.relay.three.read())
                 elif relpath.parts[0] == "output1":
                     automationhat.output.one.write(int(m[1]))
+                    client.publish(out1topic, automationhat.output.one.read())
                 elif relpath.parts[0] == "output2":
                     automationhat.output.two.write(int(m[1]))
+                    client.publish(out2topic, automationhat.output.two.read())
                 elif relpath.parts[0] == "output3":
                     automationhat.output.three.write(int(m[1]))
+                    client.publish(out3topic, automationhat.output.three.read())
                 else:
                     Print ("Undefined control")
             else:
