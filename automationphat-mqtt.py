@@ -24,9 +24,6 @@ config.read("automationphat-mqtt.conf")
 sleeptime = config.getint('general', 'interval')
 mqttaddress = config.get("mqtt", "address")
 mqtttopic = config.get("mqtt", "automationphattopic")
-mqtttopic1 = config.get("mqtt", "automationphattopic1")
-mqtttopic2 = config.get("mqtt", "automationphattopic2")
-mqtttopic3 = config.get("mqtt", "automationphattopic3")
 
 # Global variables
 global value1, value2
@@ -34,11 +31,14 @@ global value1, value2
 # MQTT-sending
 # Send ADC input values to MQTT broker
 def mqttsend(value1,value2,value3):
-    client.publish(mqtttopic1,value1)
+    voltage1topic=mqtttopic + "voltage1"
+    voltage2topic=mqtttopic + "voltage2"
+    voltage3topic=mqtttopic + "voltage3"
+    client.publish(voltage1topic,value1)
     print("mqtt value1 sent:", value1)
-    client.publish(mqtttopic2,value2)
+    client.publish(voltage2topic,value2)
     print("mqtt value2 sent:", value2)
-    client.publish(mqtttopic3,value3)
+    client.publish(voltage3topic,value3)
     print("mqtt value3 sent:", value3)
 
 # Append message instantly to messages variable upon receiving
