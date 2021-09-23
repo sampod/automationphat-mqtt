@@ -71,7 +71,7 @@ switch:
     command_topic: "automationphat/output2/control"
   - platform: "mqtt"
     name: Automationphat Output3
-    state_topic: "automationphat/outpu3"
+    state_topic: "automationphat/output3"
     payload_off: "0"
     payload_on: "1"
     command_topic: "automationphat/output3/control"
