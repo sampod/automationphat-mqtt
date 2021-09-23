@@ -76,19 +76,19 @@ switch:
     payload_on: "1"
     command_topic: "automationphat/output3/control"
   - platform: "mqtt"
-    name: Automationphat Relay
+    name: Automationphat Relay 1
     state_topic: "automationphat/relay1"
     payload_off: "0"
     payload_on: "1"
     command_topic: "automationphat/relay1/control"
   - platform: "mqtt"
-    name: Automationphat Relay2
+    name: Automationphat Relay 2
     state_topic: "automationphat/relay2"
     payload_off: "0"
     payload_on: "1"
     command_topic: "automationphat/relay2/control"
   - platform: "mqtt"
-    name: Automationphat Relay
+    name: Automationphat Relay 3
     state_topic: "automationphat/relay3"
     payload_off: "0"
     payload_on: "1"
