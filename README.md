@@ -28,15 +28,15 @@ For usage with home assistant see following example.
 sensor:
   - platform: mqtt
     name: Automationphat voltage 1
-    state_topic: "automationphat/sensor/voltage1/state"
+    state_topic: "automationphat/voltage1"
     unit_of_measurement: V
   - platform: mqtt
     name: Automationphat voltage 2
-    state_topic: "automationphat/sensor/voltage2/state"
+    state_topic: "automationphat/voltage2"
     unit_of_measurement: V
   - platform: mqtt
     name: Automationphat voltage 3
-    state_topic: "automationphat/sensor/voltage3/state"
+    state_topic: "automationphat/voltage3"
     unit_of_measurement: V
 
 binary_sensor:
