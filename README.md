@@ -59,26 +59,38 @@ binary_sensor:
 switch:
   - platform: "mqtt"
     name: Automationphat Output1
-    state_topic: "automationphat/5"
+    state_topic: "automationphat/output1"
     payload_off: "0"
     payload_on: "1"
-    command_topic: "automationphat/5/control"
+    command_topic: "automationphat/output1/control"
   - platform: "mqtt"
     name: Automationphat Output2
-    state_topic: "automationphat/12"
+    state_topic: "automationphat/output2"
     payload_off: "0"
     payload_on: "1"
-    command_topic: "automationphat/12/control"
+    command_topic: "automationphat/output2/control"
   - platform: "mqtt"
     name: Automationphat Output3
-    state_topic: "automationphat/6"
+    state_topic: "automationphat/outpu3"
     payload_off: "0"
     payload_on: "1"
-    command_topic: "automationphat/6/control"
+    command_topic: "automationphat/output3/control"
   - platform: "mqtt"
     name: Automationphat Relay
-    state_topic: "automationphat/16"
+    state_topic: "automationphat/relay1"
     payload_off: "0"
     payload_on: "1"
-    command_topic: "automationphat/16/control"
+    command_topic: "automationphat/relay1/control"
+  - platform: "mqtt"
+    name: Automationphat Relay2
+    state_topic: "automationphat/relay2"
+    payload_off: "0"
+    payload_on: "1"
+    command_topic: "automationphat/relay2/control"
+  - platform: "mqtt"
+    name: Automationphat Relay
+    state_topic: "automationphat/relay3"
+    payload_off: "0"
+    payload_on: "1"
+    command_topic: "automationphat/relay3/control"
 ```
