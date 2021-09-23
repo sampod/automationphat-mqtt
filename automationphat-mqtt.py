@@ -52,15 +52,9 @@ def on_connect(client, userdata, flags, rc):
 
     if rc==0:
         client.connected_flag=True
-        client.subscribe(relay_ctltopic)
         client.subscribe(relay_ctltopic2)
-        client.subscribe(relay2_ctltopic1)
         client.subscribe(relay2_ctltopic2)
-        client.subscribe(relay3_ctltopic1)
         client.subscribe(relay3_ctltopic2)
-        client.subscribe(out1_ctltopic)
-        client.subscribe(out2_ctltopic)
-        client.subscribe(out3_ctltopic)
         client.subscribe(out1_ctltopic2)
         client.subscribe(out2_ctltopic2)
         client.subscribe(out3_ctltopic2)
@@ -76,8 +70,18 @@ def on_connect(client, userdata, flags, rc):
 # Send digital input pulses instantly to MQTT broker
 def pulsecallback(channel):
     print ("State change detected on input 1, BCM:", channel)
-    pubtopic = mqtttopic + str(channel)
-    client.publish(pubtopic,GPIO.input(channel))
+    print (channel)
+    if channel == 26:
+        pubtopic = mqtttopic + "input1"
+        client.publish(pubtopic,GPIO.input(channel))
+    elif channel == 20:
+        pubtopic = mqtttopic + "input2"
+        client.publish(pubtopic,GPIO.input(channel))
+    elif channel == 21:
+        pubtopic = mqtttopic + "input3"
+        client.publish(pubtopic,GPIO.input(channel))
+    else:
+        print("iunknown channel")
 
 # Send ADC data to MQTT broker
 def adcsend():
@@ -91,10 +95,11 @@ schedule.every(sleeptime).minutes.do(adcsend)
 
 # GPIO initialisations
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(5,GPIO.OUT)
-GPIO.setup(6,GPIO.OUT)
-GPIO.setup(12,GPIO.OUT)
-GPIO.setup(16,GPIO.OUT)
+# not needed when using automationhat library
+# GPIO.setup(5,GPIO.OUT)
+# GPIO.setup(6,GPIO.OUT)
+# GPIO.setup(12,GPIO.OUT)
+# GPIO.setup(16,GPIO.OUT)
 GPIO.setup(26,GPIO.IN)
 GPIO.setup(20,GPIO.IN)
 GPIO.setup(21,GPIO.IN)
@@ -104,15 +109,9 @@ GPIO.add_event_detect(20, GPIO.BOTH, callback=pulsecallback)
 GPIO.add_event_detect(21, GPIO.BOTH, callback=pulsecallback)
 ##MQTT initialisations
 messages=[]
-relay_ctltopic=mqtttopic + "13/control/#"
 relay_ctltopic2=mqtttopic + "relay1/control/#"
-relay2_ctltopic1=mqtttopic + "19/control/#"
 relay2_ctltopic2=mqtttopic + "relay2/control/#"
-relay3_ctltopic1=mqtttopic + "16/control/#"
 relay3_ctltopic2=mqtttopic + "relay3/control/#"
-out1_ctltopic=mqtttopic + "5/control/#"
-out2_ctltopic=mqtttopic + "12/control/#"
-out3_ctltopic=mqtttopic + "6/control/#"
 out1_ctltopic2=mqtttopic + "output1/control/#"
 out2_ctltopic2=mqtttopic + "output2/control/#"
 out3_ctltopic2=mqtttopic + "output3/control/#"
@@ -151,7 +150,7 @@ while True:
             relpath = msgpath.relative_to(mqtttopic)
             print("received ",m)
             if m[1] == "0" or m[1]=="1":
-                print("Controlling GPIO:",relpath.parts[0]," to:",int(m[1]))
+                print("Controlling :",relpath.parts[0]," to:",int(m[1]))
                 if relpath.parts[0] == "relay1":
                     automationhat.relay.one.write(int(m[1]))
                 elif relpath.parts[0] == "relay2":
@@ -167,7 +166,7 @@ while True:
                 elif relpath.parts[0] == "output3":
                     automationhat.output.three.write(int(m[1]))
                 else:
-                    GPIO.output(int(relpath.parts[0]),int(m[1])) #set
+                    Print ("Undefined control")
             else:
                 print("Invalid control string - try 0 or 1")
 # keep scheduled processes running
