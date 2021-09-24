@@ -144,10 +144,11 @@ client.publish(relay3topic, automationhat.relay.three.read())
 client.publish(out1topic, automationhat.output.one.read())
 client.publish(out2topic, automationhat.output.two.read())
 client.publish(out3topic, automationhat.output.three.read())
+mainsleeptime = 1
 
 while True:
     try:
-        time.sleep(1)
+        time.sleep(mainsleeptime)
 # process messages if received
         if len(messages)>0:
             m=messages.pop(0)
@@ -178,8 +179,10 @@ while True:
                     client.publish(out3topic, automationhat.output.three.read())
                 else:
                     Print ("Undefined control")
+                mainsleeptime = 0.1
             else:
                 print("Invalid control string - try 0 or 1")
+        else: mainsleeptime = 1
 # keep scheduled processes running
         schedule.run_pending()
     except KeyboardInterrupt:
