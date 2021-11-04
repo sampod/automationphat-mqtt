@@ -1,5 +1,8 @@
-paho-mqtt>=1.4.0
-RPi.GPIO>=0.7.1a4
-automationhat>=0.1.0
-smbus>=1.1.post2
-schedule>=1.1.0
+automationhat==0.3.0
+paho-mqtt==1.5.1
+RPi.GPIO==0.7.1a4
+schedule==1.1.0
+smbus==1.1.post2
+sn3218==1.2.7
+spidev==3.5
+ST7735==0.0.4.post1
