@@ -8,9 +8,9 @@ Enables (easy?) integration to for example Home Assistant.
 Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [Automation
 pHAT](https://shop.pimoroni.com/products/automation-phat) (discontinued). 
 
-As automation pHAT is disconued, i´m planning to add support for at least
+As automation pHAT is disconued, i also added support for 
 [Automation HAT](https://shop.pimoroni.com/products/automation-hat)
-which i have...
+which i have.
 
 Latest
 [Automation HAT Mini](https://shop.pimoroni.com/products/automation-hat-mini)
