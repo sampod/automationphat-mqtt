@@ -91,7 +91,7 @@ def adcsend():
     mqttsend(value1,value2,value3)
 
 # Schedule ADC data sending
-schedule.every(sleeptime).minutes.do(adcsend)
+schedule.every(sleeptime).seconds.do(adcsend)
 
 # GPIO initialisations
 GPIO.setmode(GPIO.BCM)
@@ -187,3 +187,4 @@ while True:
         schedule.run_pending()
     except KeyboardInterrupt:
         GPIO.cleanup()       # clean up GPIO on CTRL+C exit
+        exit()
