@@ -1,12 +1,15 @@
 # automationphat-mqtt
 Reads Automation pHAT ADC inputs and GPIO IOs and sends it to MQTT server.
 Allows controlling outputs via MQTT.
-Requires Pimoroni automationphat libraries.
+Requires and relies heavily on 
+[pimoroni/automation-hat libraries](https://github.com/pimoroni/automation-hat).
 Enables (easy?) integration to for example Home Assistant.
+
+![Pic of Automation HAT](automationhat.jpg "a title")
 
 ## Suggested hardware:  
 Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [Automation
-pHAT](https://shop.pimoroni.com/products/automation-phat) (discontinued). 
+pHAT](https://pinout.xyz/pinout/automation_phat) (discontinued). 
 
 As automation pHAT is disconued, i also added support for 
 [Automation HAT](https://shop.pimoroni.com/products/automation-hat)
