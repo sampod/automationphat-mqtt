@@ -8,18 +8,22 @@ Enables (easy?) integration to for example Home Assistant.
 ![Pic of Automation HAT](automationhat.jpg "a title")
 
 ## Suggested hardware:  
-Raspberry Pi Zero-W with Raspberry OS (former Raspbian). Pimoroni [Automation
-pHAT](https://pinout.xyz/pinout/automation_phat) (discontinued). 
+Pretty much any Raspberry Pi will do with Raspberry OS (former Raspbian). 
 
-As automation pHAT is disconued, i also added support for 
+And one of the pHAT/HAT supported by pimoroni library:
+- Pimoroni [Automation pHAT](https://pinout.xyz/pinout/automation_phat) (discontinued). 
+- As automation pHAT is disconued, i also added support for 
 [Automation HAT](https://shop.pimoroni.com/products/automation-hat)
 which i have.
 
-Latest
+- Latest
 [Automation HAT Mini](https://shop.pimoroni.com/products/automation-hat-mini)
 should also be partly supported, but i haven't tested it.
 
 ## Usage
+Pimoroni library uses smbus to detect board type so this script need it too. Enable it if you haven't already:  
+``sudo raspi-config`` -> ``Interfacing options`` -> ``P5 I2C`` -> enable -> restart
+
 Create python venv if desired. Clone the repository. 
 Copy automationphat-mqtt.conf.example to automationphat-mqtt.conf
 and modify as needed. Install requirements from requirements.txt. Run.
