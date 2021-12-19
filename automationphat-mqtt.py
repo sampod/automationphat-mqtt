@@ -51,6 +51,7 @@ def on_message(client, userdata, message):
 def on_connect(client, userdata, flags, rc):
 
     if rc==0:
+        print("connected")
         client.connected_flag=True
         client.subscribe(relay_ctltopic2)
         client.subscribe(relay2_ctltopic2)
@@ -60,12 +61,25 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe(out3_ctltopic2)
         if automationhat.is_automation_hat():
             automationhat.light.comms.on()
+        # Schedule ADC data sending
+        schedule.every(sleeptime).seconds.do(adcsend)
+
 
     else:
+        print("connection error")
         client.bad_connection_flag=True
         client.connected_flag=False
         if automationhat.is_automation_hat():
             automationhat.light.comms.off()
+        # cancel all tasks (currently only adcsend)
+        schedule.clear()
+
+def on_disconnect(client, userdata, rc):
+    print("disconnected")
+    client.connected_flag=False
+    client.disconnect_flag=True
+    # cancel all tasks (currently only adcsend)
+    schedule.clear()
 
 # Send digital input pulses instantly to MQTT broker
 def pulsecallback(channel):
@@ -90,8 +104,6 @@ def adcsend():
     value3 = automationhat.analog.three.read()
     mqttsend(value1,value2,value3)
 
-# Schedule ADC data sending
-schedule.every(sleeptime).seconds.do(adcsend)
 
 # GPIO initialisations
 GPIO.setmode(GPIO.BCM)
@@ -118,6 +130,7 @@ out3_ctltopic2=mqtttopic + "output3/control/#"
 client= mqtt.Client("GPIO-client-001")  #create client object client1.on_publish = on_publis
 client.on_message=on_message
 client.on_connect=on_connect
+client.on_disconnect=on_disconnect
 client.connected_flag=False
 client.connect(mqttaddress)#connect
 
