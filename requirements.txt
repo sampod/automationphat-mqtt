@@ -3,6 +3,6 @@ paho-mqtt==1.6.1
 RPi.GPIO==0.7.1a4
 schedule==1.1.0
 smbus==1.1.post2
-sn3218==1.2.7
+sn3218==2.0.0
 spidev==3.5
 ST7735==0.0.4.post1
