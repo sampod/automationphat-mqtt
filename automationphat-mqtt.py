@@ -59,11 +59,15 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe(out1_ctltopic2)
         client.subscribe(out2_ctltopic2)
         client.subscribe(out3_ctltopic2)
+        # enable lights if using automationhat
         if automationhat.is_automation_hat():
             automationhat.light.comms.on()
         # Schedule ADC data sending
         schedule.every(sleeptime).seconds.do(adcsend)
-
+        # send input statuses on connect
+        pulsecallback(26)
+        pulsecallback(20)
+        pulsecallback(21)
 
     else:
         print("connection error")
