@@ -32,6 +32,66 @@ For usage with home assistant see following example.
 ## Example home assistant configuration.yaml entry:
 ```
 # Example configuration.yaml entry
+mqtt:
+  switch:
+    - name: Automationphat output 1
+      state_topic: "automationphat/output1"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/output1/control"
+    - name: Automationphat output 2
+      state_topic: "automationphat/output2"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/output2/control"
+    - name: Automationphat output 3
+      state_topic: "automationphat/output3"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/output3/control"
+    - name: Automationphat relay 1
+      state_topic: "automationphat/relay1"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/relay1/control"
+    - name: Automationphat relay 2
+      state_topic: "automationphat/relay2"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/relay2/control"
+    - name: Automationphat relay 3
+      state_topic: "automationphat/relay3"
+      payload_off: "0"
+      payload_on: "1"
+      command_topic: "automationphat/relay3/control"
+  sensor:
+    - name: Automationphat voltage 1
+      state_topic: "automationphat/voltage1"
+      unit_of_measurement: V
+    - name: Automationphat voltage 2
+      state_topic: "automationphat/voltage2"
+      unit_of_measurement: V
+    - name: Automationphat voltage 3
+      state_topic: "automationphat/voltage3"
+      unit_of_measurement: V
+  binary_sensor:
+    - name: Automationphat input 1
+      state_topic: "automationphat/input1"
+      payload_on: 1
+      payload_off: 0
+    - name: Automationphat input 2
+      state_topic: "automationphat/input2"
+      payload_on: 1
+      payload_off: 0
+    - name: Automationphat input 3
+      state_topic: "automationphat/input3"
+      payload_on: 1
+      payload_off: 0
+
+
+## Example home assistant configuration.yaml entry - the old way:
+```
+# Example configuration.yaml entry
 sensor:
   - platform: mqtt
     name: Automationphat voltage 1
