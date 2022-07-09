@@ -87,7 +87,7 @@ mqtt:
       state_topic: "automationphat/input3"
       payload_on: 1
       payload_off: 0
-
+```
 
 ## Example home assistant configuration.yaml entry - the old way:
 ```
