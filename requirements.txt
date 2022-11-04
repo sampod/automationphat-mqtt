@@ -4,5 +4,5 @@ RPi.GPIO==0.7.1
 schedule==1.1.0
 smbus==1.1.post2
 sn3218==2.0.0
-spidev==3.5
+spidev==3.6
 ST7735==0.0.4.post1
