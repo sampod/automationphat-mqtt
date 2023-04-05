@@ -13,9 +13,14 @@ from pathlib import PurePath
 import automationhat
 time.sleep(0.1) # short pause after ads1015 class creation recommended
 
-if automationhat.is_automation_hat():
-    automationhat.light.power.write(1)
-    automationhat.enable_auto_lights(True)
+try:
+    if automationhat.is_automation_hat():
+        automationhat.light.power.write(1)
+        automationhat.enable_auto_lights(True)
+        has_ADC=1
+except:
+    print ("No ADC found")
+    has_ADC=0
 
 # initialize config
 config = configparser.ConfigParser()
@@ -60,10 +65,11 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe(out2_ctltopic2)
         client.subscribe(out3_ctltopic2)
         # enable lights if using automationhat
-        if automationhat.is_automation_hat():
+        if has_ADC == 1:
             automationhat.light.comms.on()
-        # Schedule ADC data sending
-        schedule.every(sleeptime).seconds.do(adcsend)
+        # Schedule ADC data sending if ADC has been detected
+        if has_ADC == 1:
+            schedule.every(sleeptime).seconds.do(adcsend)
         # send input statuses on connect
         pulsecallback(26)
         pulsecallback(20)
@@ -178,11 +184,11 @@ while True:
                     automationhat.relay.one.write(int(m[1]))
                     client.publish(relay1topic, automationhat.relay.one.read())
                 elif relpath.parts[0] == "relay2":
-                    if automationhat.is_automation_hat():
+                    if has_ADC == 1:
                         automationhat.relay.two.write(int(m[1]))
                         client.publish(relay2topic, automationhat.relay.two.read())
                 elif relpath.parts[0] == "relay3":
-                    if automationhat.is_automation_hat():
+                    if has_ADC == 1:
                         automationhat.relay.three.write(int(m[1]))
                         client.publish(relay3topic, automationhat.relay.three.read())
                 elif relpath.parts[0] == "output1":
