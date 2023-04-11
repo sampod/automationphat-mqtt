@@ -1,7 +1,7 @@
 automationhat==0.4.1
 paho-mqtt==1.6.1
 RPi.GPIO==0.7.1
-schedule==1.1.0
+schedule==1.2.0
 smbus==1.1.post2
 sn3218==2.0.0
 spidev==3.6
