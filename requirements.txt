@@ -1,5 +1,5 @@
 automationhat==0.4.1
-paho-mqtt==1.6.1
+paho-mqtt==2.0.0
 RPi.GPIO==0.7.1
 schedule==1.2.1
 smbus==1.1.post2
